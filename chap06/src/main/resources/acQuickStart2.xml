@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<aop:aspectj-autoproxy />
+	<!-- Aspect 클래스를 빈으로 등록 -->
+	<bean id="performanceTraceAspect" class="board.ProfilingAspect" />
+	<bean id="updateMemberInfoTraceAspect"
+		class="board.UpdateMemberInfoTraceAspect" />
+	<bean id="cache" class="board.ArticleCacheAspect" />
+	<bean id="writeArticleService"
+		class="board.WriteArticleServiceImpl">
+		<constructor-arg>
+			<ref bean="articleDao" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="articleDao" class="board.MemoryArticleDao" />
+	<bean id="memberService" class="board.MemberServiceImpl" />
+	<bean id="readArticleService" class="board.ReadArticleServiceImpl">
+		<property name="articleDao" ref="articleDao" />
+	</bean>
+</beans>

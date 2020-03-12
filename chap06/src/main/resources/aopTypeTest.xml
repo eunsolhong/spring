@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!-- <aop:aspectj-autoproxy proxy-target-class="true" 클래스를 사용할 때 필요함 /> -->
+<!-- aop 적용시에 aop가 적용이 되는 클래스가 다른거에 인젝션이 되니까 proxy-target-class를 써줘야함 -->
+<!-- 인터페이스만 사용할때는 proxy-target-class="true" 필요가없다 -->
+
+	<aop:aspectj-autoproxy/>
+	<!-- Aspect 클래스를 빈으로 등록-->
+	<bean id="updateMemberInfoTraceAspect"
+		class="board.UpdateMemberInfoTraceAspect" />
+
+	<bean id="memberService" class="board.MemberServiceImpl" />
+
+
+	<bean id="memberServiceLocator" class="board.MemberServiceLocator" >
+		<property name="memberService" ref="memberService" />
+	</bean>
+	
+</beans>

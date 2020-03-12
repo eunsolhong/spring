@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="profiler" class="board.Profiler" />
+	<bean id="cache" class="board.ArticleCacheAdvice" />
+
+	<!-- Aspect 설정 : Advice를 어떤 Pointcut에 적용할 지 설정 -->
+	<aop:config>
+		<aop:aspect id="traceAspect" ref="profiler" order="2">
+			<aop:pointcut id="publicMethod" expression="within(*))" />
+			<aop:around pointcut-ref="publicMethod" method="trace" />
+		</aop:aspect>
+	</aop:config>
+
+
+	<aop:config>
+		<aop:aspect id="cacheAspect" ref="cache" order="1">
+			<aop:around method="cache"
+				pointcut="execution(public * board.ReadArticleServiceImpl.*(..))" />
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="writeArticleService"
+		class="board.WriteArticleServiceImpl">
+		<constructor-arg>
+			<ref bean="articleDao" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="articleDao" class="board.MemoryArticleDao" />
+
+	<bean id="readArticleService" class="board.ReadArticleServiceImpl">
+		<property name="articleDao" ref="articleDao" />
+	</bean>
+
+	<bean id="memberUpdateTraceAdvice"
+		class="board.UpdateMemberInfoTraceAdvice" />
+</beans>
