@@ -66,7 +66,7 @@
 								<li>또는, sample.xml 이나 SampleConfig.java 에서 핸들러 인터셉터 설정을 주석
 									처리 후 실행</li>
 							</ul></li>
-						<li><a href="member/modify>mid=m1">/member/modify?mid=m1</a>
+						<li><a href="member/modify?mid=m1">/member/modify?mid=m1</a>
 							: GET/POST에서 동일 타입 커맨드객체 사용하기, MemberModificationController</li>
 						<li><a href="event/list">/event/list</a> : @ModelAttribute를
 							이용한 공통모델, EventController.recommand()</li>

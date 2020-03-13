@@ -13,7 +13,7 @@
 	<!-- <mvc:default-servlet-handler /> -->
 
 	<context:component-scan
-		base-package="controller,service" />
+		base-package="controller,service" /> <!--따로 컨트롤와 서비스를 추가안해도된다. 외부클래스파일 스캐닝 -->
 
 	<mvc:view-controller path="/index"
 		view-name="index" />
