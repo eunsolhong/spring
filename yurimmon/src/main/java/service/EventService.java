@@ -1,10 +1,17 @@
-package event;
+package service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.springframework.stereotype.Component;
+
+import event.Event;
+import event.EventType;
+import event.SearchOption;
+
+@Component
 public class EventService {
 
 	private SortedMap<Long, Event> eventMap = new TreeMap<Long, Event>();
@@ -35,4 +42,7 @@ public class EventService {
 		return result;
 	}
 	
+	public Event getEvent(Long eventId) {
+		return eventMap.get(eventId);
+	}
 }

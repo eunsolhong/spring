@@ -1,4 +1,4 @@
-package quickstart;
+package controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

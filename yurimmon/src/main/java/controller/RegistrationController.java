@@ -1,16 +1,23 @@
-package member;
+package controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import member.MemberRegistRequest;
+import member.MemberRegistValidator;
+import service.MemberService;
+
 @Controller
 @RequestMapping("/member/regist")
 public class RegistrationController {
 
-	private static final String MEMBER_REGISTRATION_FROM = "member/registrationFrom";
+	private static final String MEMBER_REGISTRATION_FROM = "member/registrationForm";
+	
+	@Autowired
 	private MemberService memberService;
 	
 	@RequestMapping(method=RequestMethod.GET)

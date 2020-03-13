@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import controller.HelloController2;
+
 @Configuration
 @EnableWebMvc
 public class MvcQuickStartConfig {

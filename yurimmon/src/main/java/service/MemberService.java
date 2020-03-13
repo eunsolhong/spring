@@ -1,10 +1,17 @@
-package member;
+package service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
+import member.Address;
+import member.MemberInfo;
+import member.MemberRegistRequest;
+
+@Component
 public class MemberService {
 
 	private int nextMemberId = 0;
