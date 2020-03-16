@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import controller.MemberNotFoundException;
-import controller.NotMatchPasswordException;
+import exception.MemberNotFoundException;
+import exception.NotMatchPasswordException;
 import member.Address;
 import member.MemberInfo;
 import member.MemberModRequest;
@@ -51,5 +51,13 @@ public class MemberService {
 		mi.setName(modReq.getName());
 		mi.setAllowNoti(modReq.isAllowNoti());
 		mi.setAddress(modReq.getAddress());
+	}
+
+	public MemberInfo getMemberInfoByEmail(String email) {
+		for(MemberInfo mi : memberMap.values()) {
+			if(mi.getEmail().equals(email))
+				return mi;
+		}
+		return null;
 	}
 }

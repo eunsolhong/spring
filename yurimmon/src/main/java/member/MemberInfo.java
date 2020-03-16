@@ -52,6 +52,11 @@ public class MemberInfo {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "MemberInfo [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password
+				+ ", allowNoti=" + allowNoti + ", address=" + address + "]";
+	}
 	
 }

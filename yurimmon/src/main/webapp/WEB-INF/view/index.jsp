@@ -72,8 +72,28 @@
 							이용한 공통모델, EventController.recommand()</li>
 					</ul>
 				</li>
+				
+				
+				<li>요청 헤더 값:
+				<ul>
+				<li><a href="header/simple">/header/simple</a> :
+				@RequestHeader와 @CookiesValue, SimpleHeaderController.simple()</li>
+				<li><a href="header/createauth">/header/createauth</a> :
+				@CookieValue 테스트를 위한 쿠키 생성, SimpleHeaderController.createAuth()</li>
+
+				<li>리다이렉트 : 
+				<ul>
+				<li><a href="header/createauth">/header/createauth</a> SimpleheaderController.createAuth()</li>
 
 
+				<li>값 검증
+				<ul>
+				<li><a href="member/regist">/member/regist</a> :
+				값 검증, &lt;spring:hasBindErrors name = "memberInfo" /&gt;를 이용한 에러메세지, RegistrationController</li>
+				<li><a href="auth/login">/auth/login</a> :
+				@Valid 이용 값 검증, &lt;form:form commandName = "loginCommand"&gt;를 이용한 에러메세지, 글로벌 에러메세지, LoginController</li>
+				<li><a href="member/modify?mid=m2">/member/modify?mid=m2</a> :
+				@Valid 및 JSR3-3 이용 값 검증, MemberModificationController</li>
 			</ul>
 		</li>
 </body>
