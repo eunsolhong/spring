@@ -83,6 +83,8 @@
 
 				<li>리다이렉트 : 
 				<ul>
+				</ul>
+				</ul>
 				<li><a href="header/createauth">/header/createauth</a> SimpleheaderController.createAuth()</li>
 
 
@@ -96,5 +98,27 @@
 				@Valid 및 JSR3-3 이용 값 검증, MemberModificationController</li>
 			</ul>
 		</li>
+		
+				<li>값 변환:
+				<ul>
+				<li><a href="member/regist">/member/regist</a> :
+				@DateTimeFormat, RegistrationController/MemberRegistRequest </li>
+				<li><a href="event/list">/event/list</a> :
+				@InitBinder와 CustomDateEditor, EventController.list()</li>
+			</ul>
+		</li>
+		
+		<li> HTTP 세션:
+		<ul>
+		<li><a href="auth/login">/auth/login</a>:
+		HttpServletRequest를 통해 HttpSession 사용, LoginController</li>
+		<li><a href="auth/logout">/auth/logout</a>:
+		HttpSession 직접 사용, LogoutController</li>
+		<li><a href="newevent/step1">/newevent/step1</a>:
+		@SessionAttributes 사용, EventCreationController</li>
+		
+		</ul>
+		</li>
+		
 </body>
 </html>

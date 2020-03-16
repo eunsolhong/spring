@@ -49,7 +49,7 @@ public class LoginController {
 	   }
 	   
 	
-	@InitBinder
+	@InitBinder //webBinder에 의해서 LoginCommandValidator를 인젝션해준다
 	protected void initBinder(WebDataBinder binder) {
 		binder.setValidator(new LoginCommandValidator());
 	}

@@ -67,7 +67,7 @@ public class MemberRegistRequest {
 		this.address = address;
 	}
 
-	@DateTimeFormat(pattern = "yyyyMMdd")
+//	@DateTimeFormat(pattern = "yyyyMMdd")
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
