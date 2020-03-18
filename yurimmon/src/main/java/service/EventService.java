@@ -45,4 +45,10 @@ public class EventService {
 	public Event getEvent(Long eventId) {
 		return eventMap.get(eventId);
 	}
+	
+	public List<Event> getRecommendedEventService() {
+		List<Event> recommendList = new ArrayList<Event>();
+		recommendList.add(eventMap.get(1L));
+		return recommendList;
+	}
 }

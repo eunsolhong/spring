@@ -72,53 +72,87 @@
 							이용한 공통모델, EventController.recommand()</li>
 					</ul>
 				</li>
-				
-				
-				<li>요청 헤더 값:
-				<ul>
-				<li><a href="header/simple">/header/simple</a> :
-				@RequestHeader와 @CookiesValue, SimpleHeaderController.simple()</li>
-				<li><a href="header/createauth">/header/createauth</a> :
-				@CookieValue 테스트를 위한 쿠키 생성, SimpleHeaderController.createAuth()</li>
 
-				<li>리다이렉트 : 
-				<ul>
-				</ul>
-				</ul>
-				<li><a href="header/createauth">/header/createauth</a> SimpleheaderController.createAuth()</li>
+
+				<li>요청 헤더 값:
+					<ul>
+						<li><a href="header/simple">/header/simple</a> :
+							@RequestHeader와 @CookiesValue, SimpleHeaderController.simple()</li>
+						<li><a href="header/createauth">/header/createauth</a> :
+							@CookieValue 테스트를 위한 쿠키 생성, SimpleHeaderController.createAuth()</li>
+
+						<li>리다이렉트 :
+							<ul>
+							</ul>
+					</ul>
+				<li><a href="header/createauth">/header/createauth</a>
+					SimpleheaderController.createAuth()</li>
 
 
 				<li>값 검증
-				<ul>
-				<li><a href="member/regist">/member/regist</a> :
-				값 검증, &lt;spring:hasBindErrors name = "memberInfo" /&gt;를 이용한 에러메세지, RegistrationController</li>
-				<li><a href="auth/login">/auth/login</a> :
-				@Valid 이용 값 검증, &lt;form:form commandName = "loginCommand"&gt;를 이용한 에러메세지, 글로벌 에러메세지, LoginController</li>
-				<li><a href="member/modify?mid=m2">/member/modify?mid=m2</a> :
-				@Valid 및 JSR3-3 이용 값 검증, MemberModificationController</li>
-			</ul>
-		</li>
-		
+					<ul>
+						<li><a href="member/regist">/member/regist</a> : 값 검증,
+							&lt;spring:hasBindErrors name = "memberInfo" /&gt;를 이용한 에러메세지,
+							RegistrationController</li>
+						<li><a href="auth/login">/auth/login</a> : @Valid 이용 값 검증,
+							&lt;form:form commandName = "loginCommand"&gt;를 이용한 에러메세지, 글로벌
+							에러메세지, LoginController</li>
+						<li><a href="member/modify?mid=m2">/member/modify?mid=m2</a>
+							: @Valid 및 JSR3-3 이용 값 검증, MemberModificationController</li>
+					</ul>
+				</li>
+
 				<li>값 변환:
-				<ul>
-				<li><a href="member/regist">/member/regist</a> :
-				@DateTimeFormat, RegistrationController/MemberRegistRequest </li>
-				<li><a href="event/list">/event/list</a> :
-				@InitBinder와 CustomDateEditor, EventController.list()</li>
+					<ul>
+						<li><a href="member/regist">/member/regist</a> :
+							@DateTimeFormat, RegistrationController/MemberRegistRequest</li>
+						<li><a href="event/list">/event/list</a> : @InitBinder와
+							CustomDateEditor, EventController.list()</li>
+					</ul>
+				</li>
+
+				<li>HTTP 세션:
+					<ul>
+						<li><a href="auth/login">/auth/login</a>: HttpServletRequest를
+							통해 HttpSession 사용, LoginController</li>
+						<li><a href="auth/logout">/auth/logout</a>: HttpSession 직접
+							사용, LogoutController</li>
+						<li><a href="newevent/step1">/newevent/step1</a>:
+							@SessionAttributes 사용, EventCreationController</li>
+					</ul>
+				</li>
+
+				<li>익셉션 처리 :
+					<ul>
+						<li><a href="cal/divide?op1=10&op2=0">/cal/divide&amp;op1=10&op2=0</a>
+							: @ExecutionHandler, CalculatorController()</li>
+						<li><a href="event/detail2">/event/detail2</a> :
+							@ControllerAdvice 사용, CommonExceptionHandler. 설정(sample.xml,
+							SampleConfig.java)에서 CommonExeceptionHandler 부분의 주석 해제 후</li>
+						<li><a href="files/a111">/files/a111</a> : 익셉션 클래스에
+							RequestStatus 사용, FileController.fileInfo() / NoFileInfoExecetion</li>
+					</ul>
+				</li>
+
+
+				<li>requestMapping(Pattern 이용)
+					<ul>
+						<li><a href="files/a111">/files/a111</a> : 익셉션 클래스에
+							@ResponseStatus 사용, FileController.fileInfo()/NoFileInfoExcetion</li>
+						<li><a href="files/aaa.download">/files/?*.download</a> :</li>
+						<li><a href="folders/aaa/bbb/ccc/files">/folders/**/files</a>
+							:</li>
+
+					</ul>
+				</li>
+			</ul>
+		<li>스프링 설정
+			<ul>
+				<li><a href="index">/index</a> : 뷰 전용 컨트롤러</li>
+				<li><a href="img/javalogo.jpg">/img/javalogo.jpg</a> : 정적 자원(위치
+					: WEB-INF/resources/javalogo.jpg)</li>
+
 			</ul>
 		</li>
-		
-		<li> HTTP 세션:
-		<ul>
-		<li><a href="auth/login">/auth/login</a>:
-		HttpServletRequest를 통해 HttpSession 사용, LoginController</li>
-		<li><a href="auth/logout">/auth/logout</a>:
-		HttpSession 직접 사용, LogoutController</li>
-		<li><a href="newevent/step1">/newevent/step1</a>:
-		@SessionAttributes 사용, EventCreationController</li>
-		
-		</ul>
-		</li>
-		
 </body>
 </html>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -10,13 +9,13 @@
       http://www.springframework.org/schema/mvc
       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<!-- <mvc:default-servlet-handler /> -->
+	<mvc:annotation-driven />
+	<context:component-scan base-package="controller, service" />
 
-	<context:component-scan
-		base-package="controller,service" /> <!--따로 컨트롤와 서비스를 추가안해도된다. 외부클래스파일 스캐닝 -->
+	<mvc:default-servlet-handler />
 
-	<mvc:view-controller path="/index"
-		view-name="index" />
+
+	<mvc:view-controller path="/index" view-name="index" />
 
 	<mvc:annotation-driven />
 
@@ -26,27 +25,43 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	
-	
-	<!-- <bean class="quickstart.HelloController" />
-	<bean class="event.EventController" /> -->
-	<!-- <bean id="memberService" class="member.MemberService" /> -->
-	
-	<!-- <bean class="member.RegistrationController">
-		<property name="memberService" ref="memberService" />
-	</bean>
+	<mvc:resources location="/img/, /WEB-INF/resources/"
+		mapping="/img/**" cache-period="60" />
 
-	<bean class="member.MemberController">
-		<property name="memberService" ref="memberService" />
-	</bean>
+	<!-- <bean class="quickstart.HelloController" /> 
+	<bean class="event.EventController" /> 
+	
+	<bean id="memberService" class="member.MemberService" /> 
+	<bean class="member.RegistrationController"> 
+		<property name="memberService" ref="memberService" /> 
+		</bean> 
+	
+	<bean class="member.MemberController"> 
+		<property name="memberService" ref="memberService" /> 
+		</bean> 
+	
+	<bean class="event.SearchController"/> 
+		<bean id="AclService" class="acl.AclService" /> 
+	
+	<bean class="acl.AclController"> 
+		<property name="AclService" ref="AclService" /> 
+			</bean> -->
 
-	<bean class="event.SearchController" />
 
-	<bean id="AclService" class="acl.AclService"></bean>
-	<bean class="acl.ACLController">
-		<property name="AclService" ref="AclService" />
-	</bean>
- -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/acl/**" />
+			<ref bean="authInterceptor" />
+		</mvc:interceptor>
+		<ref bean="measuringInterceptor" />
+		<mvc:interceptor>
+			<mvc:mapping path="/acl/**" />
+			<mvc:mapping path="/header/**" />
+			<mvc:mapping path="/newevent/**" />
+			<mvc:exclude-mapping path="/acl/modify" />
+			<ref bean="commonModelInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">

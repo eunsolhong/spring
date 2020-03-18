@@ -22,7 +22,7 @@ import service.LoginCommand;
 @RequestMapping("/auth/login")
 public class LoginController {
 
-	private static final String LOGIN_FORM = "auth/loginForm";
+	private static final String LOGIN_FORM = "auth/loginForm"; //변수선언
 	
 	@Autowired
 	private Authenticator authenticator;

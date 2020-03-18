@@ -18,7 +18,7 @@
 
 현재 오픈된 이벤트 : 
 <ul>
-	<c:forEach var="event" items="${eventList }">
+	<c:forEach var="event" items="${eventList}">
 		<li><a href="<%=request.getContextPath() %>/event/detail?id="${event.id}>${event.name } [${event.type }]</a>
 		</li>
 		</c:forEach>
