@@ -9,7 +9,8 @@
 	var wsocket;
 	
 	function connect() {
-		wsocket = new WebSocket("ws://localhost:8080/chap09-websocket/chat-ws");
+		wsocket = new WebSocket("ws://localhost:8080/chap09-websocket/chat-ws"); 
+		//소켓에 의해 연결된 3개의 메소드
 		wsocket.onopen = onOpen;
 		wsocket.onmessage = onMessage;
 		wsocket.onclose = onClose;
@@ -17,10 +18,10 @@
 	function disconnect() {
 		wsocket.close();
 	}
-	function onOpen(evt) {
+	function onOpen(evt) { //1번으로 실행됨
 		appendMessage("연결되었습니다.");
 	}
-	function onMessage(evt) {
+	function onMessage(evt) { 
 		var data = evt.data;
 		if (data.substring(0, 4) == "msg:") {
 			appendMessage(data.substring(4));
@@ -30,24 +31,24 @@
 		appendMessage("연결을 끊었습니다.");
 	}
 	
-	function send() {
+	function send() { //데이터를 보냄
 		var nickname = $("#nickname").val();
 		var msg = $("#message").val();
 		wsocket.send("msg:"+nickname+":" + msg);
 		$("#message").val("");
 	}
 
-	function appendMessage(msg) {
+	function appendMessage(msg) { //textarea에 찍는거
 		$("#chatMessageArea").append(msg+"<br>");
 		var chatAreaHeight = $("#chatArea").height();
 		var maxScroll = $("#chatMessageArea").height() - chatAreaHeight;
 		$("#chatArea").scrollTop(maxScroll);
 	}
 
-	$(document).ready(function() {
+	$(document).ready(function() { //window.onload
 		$('#message').keypress(function(event){
 			var keycode = (event.keyCode ? event.keyCode : event.which);
-			if(keycode == '13'){
+			if(keycode == '13'){ //keycode == '13' = enter를 눌러도 보내게해라
 				send();	
 			}
 			event.stopPropagation();
